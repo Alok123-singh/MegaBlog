@@ -20,9 +20,9 @@ function AllPosts() {
     }, []);
 
     return (
-        <div className='w-full pt-8 mb-[5rem]'>
+        <div className='w-full pt-[4.5rem] pb-[5rem] dark:bg-slate-600'>
             <Container >
-                <div className='w-full flex'>
+                <div className='w-full flex md:justify-normal flex-col items-center md:flex-row'>
                     {posts?.map((post) => {
                         console.log("Post : ",post);
                         // console.log(userData.$id);

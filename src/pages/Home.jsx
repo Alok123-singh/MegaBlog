@@ -27,7 +27,7 @@ function Home() {
     const showMessage = () => {
         return (loginStatus === false) ?
         (
-            <div className="w-full pb-6 text-center">
+            <div className="w-full pb-6 text-center dark:bg-slate-600 dark:text-gray-300">
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
@@ -40,7 +40,7 @@ function Home() {
             </div>
         ) :
         ( 
-            <div className="w-full pb-6 text-center">
+            <div className="w-full pb-6 text-center dark:bg-slate-600 dark:text-gray-300">
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
@@ -55,7 +55,7 @@ function Home() {
     }
 
     return (
-        <div className='w-full py-10'>
+        <div className='w-full py-10 dark:bg-slate-600 dark:text-gray-300'>
             {showMessage()}
             <Container>
                 <div className='flex flex-wrap justify-center md:justify-normal md:ml-7'>

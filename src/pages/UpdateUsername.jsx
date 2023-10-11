@@ -30,7 +30,7 @@ function UpdateUsername() {
     }
 
     return (
-        <div className='h-[20rem] w-full flex justify-center items-center'>
+        <div className='dark:bg-slate-600 dark:text-gray-300 h-[20rem] w-full flex justify-center items-center'>
             {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
             <form onSubmit={handleSubmit(update)} className='flex flex-wrap flex-col items-center justify-center'>
