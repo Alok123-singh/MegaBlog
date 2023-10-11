@@ -35,12 +35,12 @@ function AllPosts() {
     (
         <div className='w-full pt-[4.5rem] pb-[5rem] dark:bg-slate-600'>
             <Container >
-                <div className='w-full flex md:justify-normal flex-col items-center md:flex-row'>
+                <div className='w-full flex flex-col items-center lg:flex-row'>
                     {posts?.map((post) => {
                         console.log("Post : ",post);
                         // console.log(userData.$id);
                         return post?.userId == userData?.$id ?
-                        <div key={post.$id} className='p-2 w-[20rem]'>
+                        <div key={post.$id} className='p-2 w-[23rem] flex flex-wrap'>
                             <PostCard {...post} />
                         </div>
                         : null

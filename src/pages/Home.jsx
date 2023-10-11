@@ -58,9 +58,9 @@ function Home() {
         <div className='w-full py-10 dark:bg-slate-600 dark:text-gray-300'>
             {showMessage()}
             <Container>
-                <div className='flex flex-wrap justify-center md:justify-normal md:ml-7'>
+                <div className='flex flex-wrap justify-center md:justify-between'>
                     {posts.map((post) => (
-                        <div key={post.$id} className='p-2 w-[17rem]'>
+                        <div key={post.$id} className='p-2 w-[18rem]'>
                             <PostCard {...post} />
                         </div>
                     ))}

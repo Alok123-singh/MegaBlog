@@ -58,9 +58,12 @@ export default function Post() {
                 <div className="w-full mb-6">
                     <h1 className="text-2xl font-bold text-center">{post.title}</h1>
                 </div>
-                <div className="browser-css text-center">
-                    {parse(post.content)}
+                <div class="w-full min-h-12 p-4 border border-blue-400 border-l-fuchsia-500 rounded-3xl overflow-y-auto">
+                    <div contenteditable="true" spellcheck="false" class="w-full outline-none">
+                        {parse(post.content)}
                     </div>
+                </div>
+                
             </Container>
         </div>
     ) : null;
