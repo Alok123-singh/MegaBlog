@@ -17,8 +17,9 @@ export class AuthService{
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
             if(userAccount){
+                alert("Account created");
                 // call another method to login
-                this.login(email,password);
+                // this.login(email,password);
                 return (true);
             }
             else{
@@ -35,7 +36,8 @@ export class AuthService{
 
     async login({email,password}){
         try {
-            return await this.account.createEmailSession(email,password);
+            const session = await this.account.createEmailSession(email,password);
+            return session;
             
         } catch (error) {
             console.log('Appwrite error :: login :: ',error);
@@ -74,6 +76,8 @@ export class AuthService{
         }
         catch(error){
             console.log("Appwrite error :: updateEmail :: ", error);
+            const msg = String(error);
+            alert(msg.substring(19));
             return (null);
         }
     }
@@ -85,6 +89,8 @@ export class AuthService{
         }
         catch(error){
             console.log("Appwrite error :: updatePassword :: ", error);
+            const msg = String(error);
+            alert(msg.substring(19));
             return (null);
         }
     }

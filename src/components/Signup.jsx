@@ -14,6 +14,14 @@ function Signup() {
 
     const create = async(data) => {
         setError("")
+        if(data.name.length === 0){
+            alert('Enter your name');
+            return;
+        }
+        if(data.password.length === 0){
+            alert('Enter your password');
+            return;
+        }
         try {
             const userData = await authService.createAccount(data)
             if (userData) {
@@ -49,10 +57,11 @@ function Signup() {
                 <form onSubmit={handleSubmit(create)}>
                     <div className='space-y-5'>
                         <Input
+                        type="text"
                         label="Full Name: "
                         placeholder="Enter your full name"
                         {...register("name", {
-                            required: true,
+                            required: false,
                         })}
                         />
                         <Input
@@ -72,7 +81,7 @@ function Signup() {
                         type="password"
                         placeholder="Enter your password"
                         {...register("password", {
-                            required: true,
+                            required: false,
                             
                         })}
                         />
