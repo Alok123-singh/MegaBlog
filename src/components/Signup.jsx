@@ -35,15 +35,15 @@ function Signup() {
     }
 
   return (
-    <div className="flex items-center justify-center">
-            <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
+    <div className="flex items-center justify-center dark:bg-slate-600 dark:text-gray-800 py-10">
+            <div className={`mx-auto w-full max-w-lg bg-gray-100 dark:bg-slate-400 rounded-xl p-10 border border-black/10`}>
             <div className="mb-2 flex justify-center">
-                    <span className="inline-block w-full max-w-[100px]">
+                    <span className="w-full flex justify-center items-center">
                         <Logo width="100%" />
                     </span>
                 </div>
                 <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
-                <p className="mt-2 text-center text-base text-black/60">
+                <p className="mt-2 text-center text-base text-black/60 font-bold">
                     Already have an account?&nbsp;
                     <Link
                         to="/login"
@@ -78,7 +78,7 @@ function Signup() {
                         />
                         <Input
                         label="Password: "
-                        type="password"
+                        type="text"
                         placeholder="Enter your password"
                         {...register("password", {
                             required: false,

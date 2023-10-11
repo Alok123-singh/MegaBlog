@@ -4,7 +4,7 @@ import '../index.css'
 
 function Signup() {
     return (
-        <div className='py-9'>
+        <div className=''>
             <SignupComponent />
         </div>
     )

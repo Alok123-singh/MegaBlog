@@ -4,7 +4,7 @@ import '../index.css'
 
 function Login() {
     return (
-        <div className='py-8'>
+        <div className=''>
             <LoginComponent />
         </div>
     )
