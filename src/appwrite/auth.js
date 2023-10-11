@@ -27,6 +27,8 @@ export class AuthService{
             
         } catch (error) {
             console.log("Appwrite error :: createAccount :: ",error);
+            const msg = String(error);
+            alert(msg.substring(19));
             return (false);
         }
     }
@@ -37,6 +39,8 @@ export class AuthService{
             
         } catch (error) {
             console.log('Appwrite error :: login :: ',error);
+            const msg = String(error);
+            alert(msg.substring(19));
             return (false);
         }
     }
