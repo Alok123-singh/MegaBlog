@@ -7,6 +7,7 @@ function AllPosts() {
 
     const [posts,setPosts] = useState([]);
     const userData = useSelector(state => state.auth.userData);
+    const [isAuthor,setIsAuthor] = useState(false);
     
     useEffect(() => {
         databaseService.getAllPosts([])
@@ -19,11 +20,23 @@ function AllPosts() {
 
     }, []);
 
-    return (
+    useEffect(() => {
+        posts?.map(post => {
+            if(post?.userId === userData.$id) setIsAuthor(true);
+            
+        });
+
+    }, [posts]);
+
+    return isAuthor === false ? 
+    (<div className='w-full h-[10rem] flex justify-center items-center font-bold font dark:bg-slate-600 dark:text-gray-300'>
+        No Posts yet!!
+    </div>) : 
+    (
         <div className='w-full pt-[4.5rem] pb-[5rem] dark:bg-slate-600'>
             <Container >
                 <div className='w-full flex md:justify-normal flex-col items-center md:flex-row'>
-                    {posts ? posts.map((post) => {
+                    {posts?.map((post) => {
                         console.log("Post : ",post);
                         // console.log(userData.$id);
                         return post?.userId == userData?.$id ?
@@ -31,7 +44,7 @@ function AllPosts() {
                             <PostCard {...post} />
                         </div>
                         : null
-                    }) : <div>No Posts yet</div>}
+                    })}
                 </div>
             </Container>
         </div>

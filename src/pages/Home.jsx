@@ -31,7 +31,7 @@ function Home() {
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
-                            <h1 className="text-2xl font-bold hover:text-gray-700">
+                            <h1 className="text-2xl font-bold cursor-default hover:text-gray-700 dark:hover:text-gray-400">
                                 Login to add your posts !
                             </h1>
                         </div>
@@ -40,11 +40,11 @@ function Home() {
             </div>
         ) :
         ( 
-            <div className="w-full pb-6 text-center dark:bg-slate-600 dark:text-gray-300">
+            <div className="w-full pb-6 text-center dark:bg-slate-600 dark:text-gray-300 ">
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
-                            <h1 className="text-2xl font-bold hover:text-gray-700">
+                            <h1 className="text-2xl font-bold cursor-default hover:text-gray-700 dark:hover:text-gray-400">
                                 Welcome back {userData?.name} !
                             </h1>
                         </div>
