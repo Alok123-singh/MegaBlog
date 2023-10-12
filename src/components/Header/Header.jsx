@@ -48,7 +48,7 @@ function Header() {
 
 
     return (
-        <header className='w-full p-4 bg-slate-300 dark:bg-slate-700 dark:text-white shadow-md'>
+        <header className='w-full p-4 bg-slate-300 dark:bg-slate-700 dark:text-white shadow-md dark:shadow-2xl dark:shadow-zinc-400'>
             <Container>
                 <nav className='flex justify-center md:justify-between flex-wrap'>
                     <div className=' mx-2 my-1'>

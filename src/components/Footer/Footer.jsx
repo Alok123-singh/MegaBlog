@@ -21,7 +21,7 @@ function Footer() {
                     </div>
                     <div className="w-full pt-6 md:w-1/2 lg:w-3/12">
                         <div className="h-full flex flex-col items-center">
-                            <h3 className=" flex justify-center items-center tracking-px mb-7 text-xs font-semibold uppercase dark:text-gray-400 text-gray-900 cursor-default">
+                            <h3 className=" flex justify-center items-center tracking-px mb-9 text-xs font-semibold uppercase dark:text-gray-400 text-gray-900 cursor-default">
                                 Company
                             </h3>
                             <ul className='flex flex-col justify-center items-center'>
