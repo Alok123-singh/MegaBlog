@@ -48,7 +48,7 @@ function AllPosts() {
                         console.log("Post : ",post);
                         // console.log(userData.$id);
                         return post?.userId == userData?.$id ?
-                        <div key={post.$id} className='p-2 w-[23rem] flex flex-wrap'>
+                        <div key={post.$id} className='p-2 w-[19rem] flex flex-wrap'>
                             <PostCard {...post} />
                         </div>
                         : null

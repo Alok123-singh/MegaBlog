@@ -89,7 +89,9 @@ function Header() {
                                 <LogoutBtn />
                             </div>
                         )}
-                        <ThemeButton />
+                        <div className={`${!loginStatus && "my-4 sm:mt-[1.1rem]"}`}>
+                            <ThemeButton />
+                        </div>
                     </div>
                 </nav>
             </Container>

@@ -65,7 +65,7 @@ export default function PostForm({ post }) {
     useEffect(() => {
         setLoading(false);
 
-    },[userData ]);
+    },[userData]);
 
     useEffect(() => {
         const subscription = watch((value, { name }) => {
@@ -81,11 +81,11 @@ export default function PostForm({ post }) {
             <div className='dark:bg-slate-600  w-full flex justify-center items-center h-[10rem]'>
             <div className='bg-blue-400 w-[6rem] flex justify-center items-center p-2 m-2 rounded-md'> Loading! </div>
             </div>
-    
+
         )  : 
         (
-            <form onSubmit={handleSubmit(submit)} className="flex flex-wrap justify-center md:justify-normal">
-                <div className="w-[90%] sm:w-[80%] md:w-2/3 px-2 md:pb-8">
+            <form onSubmit={handleSubmit(submit)} className="flex w-full flex-wrap justify-center md:justify-normal">
+                <div className="w-[100%] sm:w-[80%] md:w-2/3 px-2 md:pb-8">
                     <Input
                         label="Title :"
                         placeholder="Title"
