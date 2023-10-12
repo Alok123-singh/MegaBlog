@@ -56,7 +56,7 @@ function Header() {
                             <Logo width='70px'   />
                         </Link>
                     </div>
-                    <div className={`${loginStatus? 'md:pl-[15.5rem]' : 'md:pl-[3.8rem]'} text-black dark:text-white sm:pl-[1.2rem] w-auto flex justify-evenly flex-wrap`}>
+                    <div className={`${loginStatus? 'md:pl-[15.1rem]' : 'md:pl-[3.3rem]'} text-black dark:text-white sm:pl-[1.2rem] w-auto flex justify-evenly flex-wrap`}>
                         {navItems.map((item) => 
                         item.active ? (
                         <NavLink key={item.name}
