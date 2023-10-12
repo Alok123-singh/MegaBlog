@@ -56,7 +56,7 @@ function Header() {
                             <Logo width='70px'   />
                         </Link>
                     </div>
-                    <div className={`${loginStatus? 'md:pl-[13.3rem]' : 'md:pl-[1.2rem]'} text-black dark:text-white sm:pl-[1.2rem] w-auto flex justify-evenly flex-wrap`}>
+                    <div className={`${loginStatus? 'md:pl-[15.5rem]' : 'md:pl-[3.8rem]'} text-black dark:text-white sm:pl-[1.2rem] w-auto flex justify-evenly flex-wrap`}>
                         {navItems.map((item) => 
                         item.active ? (
                         <NavLink key={item.name}
@@ -89,7 +89,7 @@ function Header() {
                                 <LogoutBtn />
                             </div>
                         )}
-                        <div className={`${!loginStatus && "my-4 sm:mt-[1.1rem]"}`}>
+                        <div className={`${!loginStatus ? "m-4 sm:mt-[1.1rem]" : 'pt-4 sm:pt-0 sm:m-4'}`}>
                             <ThemeButton />
                         </div>
                     </div>
