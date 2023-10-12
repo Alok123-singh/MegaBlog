@@ -4,7 +4,7 @@ import Logo from '../Logo'
 
 function Footer() {
     return (
-        <section className="dark:bg-slate-700 dark:text-white overflow-hidden py-10 bg-gray-400  border-t-2 dark:border-t-yellow-600 border-t-orange-700">
+        <section className="dark:bg-slate-700 dark:text-white overflow-hidden py-10 bg-gray-400  border-t-2 dark:border-t-yellow-600 border-t-fuchsia-700">
             <div className="flex justify-around items-center px-4">
                 <div className="m-6 flex justify-center md:justify-between flex-wrap">
                     <div className="pt-6 md:w-1/2 lg:w-3/12">
