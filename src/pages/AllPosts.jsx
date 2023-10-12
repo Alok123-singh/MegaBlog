@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 function AllPosts() {
 
+    const [loading, setLoading] = useState(true);
     const [posts,setPosts] = useState([]);
     const userData = useSelector(state => state.auth.userData);
     const [isAuthor,setIsAuthor] = useState(false);
@@ -16,6 +17,7 @@ function AllPosts() {
                 setPosts(posts.documents);
             }
         })
+        .finally(() => setLoading(false))
 
 
     }, []);
@@ -28,7 +30,13 @@ function AllPosts() {
 
     }, [posts]);
 
-    return isAuthor === false ? 
+    return loading ? (
+        <div className='dark:bg-slate-600  w-full flex justify-center items-center h-[10rem]'>
+          <div className='bg-blue-400 w-[6rem] flex justify-center items-center p-2 m-2 rounded-md'> Loading! </div>
+        </div>
+    
+    )  :
+       isAuthor === false ? 
     (<div className='w-full h-[10rem] flex justify-center items-center font-bold font dark:bg-slate-600 dark:text-gray-300'>
         No Posts yet!!
     </div>) : 

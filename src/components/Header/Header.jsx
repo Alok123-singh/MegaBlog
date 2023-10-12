@@ -1,6 +1,6 @@
 import React from 'react'
 import { LogoutBtn, Logo, Container, ThemeButton } from '../index.js'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 function Header() {
@@ -36,6 +36,17 @@ function Header() {
         }
     ]
 
+    const navLinkStyles = ({ isActive }) => {
+        return {
+            
+          color: '',
+          fontWeight: isActive ? 'bolder' : 'normal',
+          backgroundColor : isActive ? 'rgb(148, 163, 184) dark:rgb(16 185 129)' : '',
+          borderRadius: '15px'
+        };
+    };
+
+
     return (
         <header className='w-full p-4 bg-slate-300 dark:bg-slate-700 dark:text-white shadow-md'>
             <Container>
@@ -45,27 +56,33 @@ function Header() {
                             <Logo width='70px'   />
                         </Link>
                     </div>
-                    <ul className={`${loginStatus? 'md:pl-[13.3rem]' : 'md:pl-[1.2rem]'} sm:pl-[1.2rem] w-auto flex justify-evenly flex-wrap`}>
+                    <div className={`${loginStatus? 'md:pl-[13.3rem]' : 'md:pl-[1.2rem]'} text-black dark:text-white sm:pl-[1.2rem] w-auto flex justify-evenly flex-wrap`}>
                         {navItems.map((item) => 
                         item.active ? (
-                        <li key={item.name}>
+                        <NavLink key={item.name}
+                        style={navLinkStyles}
+                        to={`${item.slug}`}
+                        >
                             <button
-                            onClick={() => navigate(item.slug)}
-                            className='py-2 w-auto hover:bg-slate-400 dark:hover:bg-emerald-700  rounded-xl p-2 m-2'
+
+                            // onClick={() => navigate(item.slug)}
+                            className='py-2 w-[6rem] hover:bg-slate-400 dark:hover:bg-emerald-700  rounded-xl m-2'
                             >{item.name}</button>
-                        </li>
+                        </NavLink>
                         ) : null
                         )}
                         
-                    </ul>
+                    </div>
                     <div className='flex justify-between h-auto'>
                         {loginStatus && (
-                            <div 
-                            className='px-4 py-2 my-2 duration-200 hover:bg-blue-100 dark:hover:bg-emerald-700 rounded-full text-center cursor-pointer '
-                            onClick={() => navigate('/my-account')}
+                            <NavLink 
+                            style={navLinkStyles}
+                            className='px-4 py-2 my-2 w-[8rem] duration-200 hover:bg-blue-100 dark:hover:bg-emerald-700 rounded-full text-center cursor-pointer '
+                            to={'/my-account'}
+                            // onClick={() => navigate('/my-account')}
                             >
                                 My Account
-                            </div>
+                            </NavLink>
                         )}
                         {loginStatus && (
                             <div> 

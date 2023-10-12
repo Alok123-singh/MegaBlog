@@ -6,6 +6,7 @@ import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 
 export default function Post() {
+    const [loading, setLoading] = useState(true);
     const [post, setPost] = useState(null);
     const { slug } = useParams();
     const navigate = useNavigate();
@@ -16,23 +17,37 @@ export default function Post() {
 
     useEffect(() => {
         if (slug) {
-            databaseService.getPost(slug).then((post) => {
+            databaseService.getPost(slug)
+            .then((post) => {
                 if (post) setPost(post);
                 else navigate("/");
-            });
+            })
+            .finally(() => setLoading(false));
+
         } else navigate("/");
+
     }, [slug, navigate]);
 
     const deletePost = () => {
-        databaseService.deletePost(post.$id).then((status) => {
+        setLoading(true);
+        databaseService.deletePost(post.$id)
+        .then((status) => {
             if (status) {
                 databaseService.deleteFile(post.featuredImage);
                 navigate("/");
             }
-        });
+        })
+        .finally(() => setLoading(false));
+        
     };
 
-    return post ? (
+    return loading ? (
+        <div className='dark:bg-slate-600 w-full flex justify-center items-center h-[10rem]'>
+          <div className='bg-blue-400 w-[6rem] flex justify-center items-center p-2 m-2 rounded-md'> Loading! </div>
+        </div>
+    
+    ) : 
+    post ? (
         <div className="py-8 dark:bg-slate-600 dark:text-gray-300">
             <Container>
                 <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
@@ -58,8 +73,8 @@ export default function Post() {
                 <div className="w-full mb-6">
                     <h1 className="text-2xl font-bold text-center">{post.title}</h1>
                 </div>
-                <div class="w-full min-h-12 p-4 border border-blue-400 border-l-fuchsia-500 rounded-3xl overflow-y-auto">
-                    <div contenteditable="true" spellcheck="false" class="w-full outline-none">
+                <div className="w-full h-auto p-4 border border-blue-400 border-l-fuchsia-500 rounded-3xl overflow-y-auto">
+                    <div contentEditable spellcheck="false" className="w-full h-auto outline-none">
                         {parse(post.content)}
                     </div>
                 </div>

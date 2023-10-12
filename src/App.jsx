@@ -39,8 +39,9 @@ function App() {
   ) :
   
   (
-
-    <div className='bg-blue-400 flex justify-center items-center p-2 m-2 rounded-md'> Loading! </div>
+    <div className='h-screen w-full flex justify-center items-center'>
+      <div className='bg-blue-400 w-[6rem] h-[3rem] flex justify-center items-center p-2 m-2 rounded-md'> Loading! </div>
+    </div>
 
   ) 
 }
