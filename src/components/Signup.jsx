@@ -16,6 +16,7 @@ function Signup() {
     const create = async(data) => {
         setLoading(true);
         setError("")
+
         if(data.name.length === 0){
             alert('Enter your name');
             setLoading(false);

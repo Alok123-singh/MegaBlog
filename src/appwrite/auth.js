@@ -69,6 +69,18 @@ export class AuthService{
         }
     }
 
+    async createEmailVerification({url}){
+        try {
+            return await this.account.createVerification(url);
+            
+        } catch (error) {
+            console.log("Appwrite error :: createEmailVerification :: ", error);
+            const msg = String(error);
+            alert(msg.substring(19));
+            return (false);
+        }
+    }
+
     async updateEmail({email,password}) {
         try{
             if(email === '' || password === '') return (null);
@@ -82,9 +94,8 @@ export class AuthService{
         }
     }
 
-    async updatePassword({userId,newPassword,oldPassword}) {
+    async updatePassword({newPassword,oldPassword}) {
         try{
-            if(isNaN(oldPassword) || oldPassword === undefined) return (null);
             return await this.account.updatePassword(newPassword,oldPassword);
         }
         catch(error){

@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 function UpdatePassword() {
 
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const {register, handleSubmit} = useForm();
     const userData = useSelector(state => state.auth.userData);
@@ -16,6 +17,19 @@ function UpdatePassword() {
     const [userId,setUserId] = useState('');
 
     const update = async (data) => {
+        setLoading(true);
+        if(data.newPassword === ''){
+            alert('Enter new password');
+            setLoading(false);
+            return;
+        }
+
+        if(data.oldPassword === ''){
+            alert('Enter old password');
+            setLoading(false);
+            return;
+        }
+
         console.log("Data : ",data);
         setError('');
 
@@ -23,12 +37,14 @@ function UpdatePassword() {
             const user = await authService.updatePassword(data);
             if (user) {
                 dispatch(setUserData(user));
+                alert('Your password has been changed !');
+                navigate('/my-account');
             }
-            navigate('/my-account');
             
         } catch (error) {
             setError(error.message)
         }
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -36,7 +52,13 @@ function UpdatePassword() {
 
     }, []);
 
-    return (
+    return loading ? (
+        <div className='dark:bg-slate-600 w-full flex justify-center items-center h-[10rem]'>
+          <div className='bg-blue-400 w-[6rem] flex justify-center items-center p-2 m-2 rounded-md'> Loading! </div>
+        </div>
+    
+    ) : 
+    (
         <div className='dark:bg-slate-600 dark:text-gray-300 h-[20rem] py-5 w-full flex justify-center items-center'>
             {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
@@ -49,7 +71,7 @@ function UpdatePassword() {
                 placeholder = "Enter new Password"
                 className='outline-none cursor-pointer w-[15.2rem] h-[2.5rem] rounded-lg focus:bg-blue-300 bg-blue-300 p-2 my-2 text-center placeholder-gray-600' 
                 {...register("newPassword", {
-                    required: true
+                    required: false
                 })}
                 />
 
@@ -59,7 +81,7 @@ function UpdatePassword() {
                 placeholder = "Enter old Password"
                 className='outline-none cursor-pointer w-[15.2rem] h-[2.5rem] rounded-lg focus:bg-blue-300 bg-blue-300 p-2 my-2 text-center placeholder-gray-600' 
                 {...register("oldPassword", {
-                    required: true
+                    required: false
                 })}
                 />
 
