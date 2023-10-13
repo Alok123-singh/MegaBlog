@@ -1,12 +1,24 @@
-import React,{ useState } from 'react'
+import React,{ useEffect, useState } from 'react'
 import { LogoutBtn, Logo, Container, ThemeButton } from '../index.js'
-import { Link, NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { Link, NavLink, useLocation } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { setSearch } from '../../store/searchSlice.js'
+
 
 function Header() {
 
+    const location = useLocation();
+    // location.pathname.
+
+    const dispatch = useDispatch();
     const [show,setShow] = useState(false);
     const loginStatus = useSelector(state => state.auth.loginStatus);
+    const [searchValue,setSearchValue] = useState('');
+
+    useEffect(() => {
+        dispatch(setSearch(searchValue));
+
+    }, [searchValue])
 
     const navItems = [
         {
@@ -49,6 +61,8 @@ function Header() {
     const toggle = () => {
         setShow(prev => !prev);
     }
+
+
 
 
     return (
@@ -100,21 +114,21 @@ function Header() {
 
                     <div className='flex sm:hidden'>
                         <button 
-                        class="relative group"
+                        className="relative group"
                         onClick={toggle}
                         >
-                            <div class="relative flex flex-col overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
-                            <div class="transform transition-all duration-150 overflow-hidden -translate-y-5 group-focus:translate-y-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 animate-bounce text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
-                                </svg>
-                            </div>
+                            <div className="relative flex flex-col overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+                                <div className="transform transition-all duration-150 overflow-hidden -translate-y-5 group-focus:translate-y-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 animate-bounce text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                                    </svg>
+                                </div>
 
-                            <div class="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden -translate-y-3">
-                                <div class="bg-white mb-1.5 h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-y-6"></div>
-                                <div class="bg-white mb-1.5 h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-y-6 delay-75"></div>
-                                <div class="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-y-6 delay-100"></div>
-                            </div>
+                                <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden -translate-y-3">
+                                    <div className="bg-white mb-1.5 h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-y-6"></div>
+                                    <div className="bg-white mb-1.5 h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-y-6 delay-75"></div>
+                                    <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-y-6 delay-100"></div>
+                                </div>
                             </div>
                         </button>
 
@@ -122,7 +136,7 @@ function Header() {
 
                 </nav>
             </Container>
-            
+
             <div className={`${show ? 'flex' : 'hidden'} sm:hidden mt-8 flex flex-col item-center flex-wrap`}>
                 <div className={` text-black dark:text-white  flex justify-center flex-wrap`}>
                     {navItems.map((item) => 
@@ -163,6 +177,29 @@ function Header() {
                     </div>
                 </div>
             </div>
+            
+            <form className={`flex justify-center my-4 ${!location.pathname.localeCompare('/') || !location.pathname.match('/all-posts') && 'hidden' }`}>
+
+                <label 
+                className="bg-white dark:bg-slate-300 rounded-l-3xl flex items-center pl-3 px-2 border border-black border-r-0"
+                id="search"
+                
+                >
+                    &#128269;
+                </label>
+                <br/>
+
+                <input 
+                htmlFor="search"
+                className="w-[99%] md:w-[40%] h-[3rem] font-medium dark:bg-slate-300 px-2 outline-none rounded-r-3xl cursor-default border border-black border-l-0 placeholder-gray-500 dark:text-black" 
+                type="text" 
+                placeholder="Search for anything" 
+                onChange={(e) => setSearchValue(e.currentTarget.value)}
+                />
+                <br/>
+
+            </form>
+
         </header>
     )
 }

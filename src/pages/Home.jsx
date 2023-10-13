@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import databaseService from "../appwrite/appwriteConfig";
-import {Container, PostCard} from '../components/index.js'
-import { useSelector } from 'react-redux';
+import {Container} from '../components/index.js'
+import { useSelector } from 'react-redux'
+import Pagination from '../components/Pagination'; '../components/Pagination'
 
 function Home() {
 
@@ -68,11 +69,14 @@ function Home() {
             {showMessage()}
             <Container>
                 <div className='flex flex-wrap justify-center md:justify-evenly'>
-                    {posts.map((post) => (
+                    <Pagination items={posts} itemsPerPage={8} />
+                    {/* {posts.map((post) => {
+
+                        return check(post) ?
                         <div key={post.$id} className='p-2 w-[18rem]'>
                             <PostCard {...post} />
-                        </div>
-                    ))}
+                        </div> : null
+                    })} */}
                 </div>
             </Container>
         </div>
