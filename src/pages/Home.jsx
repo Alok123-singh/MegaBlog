@@ -68,7 +68,7 @@ function Home() {
         <div className='w-full py-10 dark:bg-slate-600 dark:text-gray-300'>
             {showMessage()}
             <Container>
-                <div className='flex flex-wrap justify-center md:justify-evenly'>
+                <div className='flex flex-wrap flex-col justify-center md:justify-evenly'>
                     <Pagination items={posts} itemsPerPage={12} />
                     {/* {posts.map((post) => {
 

@@ -34,7 +34,7 @@ const Pagination = ({ items, itemsPerPage }) => {
   }
 
   return (
-    <div className='flex flex-wrap justify-center md:justify-evenly'>
+    <div className='flex flex-wrap flex-col sm:flex-row justify-center md:justify-evenly'>
       {/* Display the current page items */}
       <div className='flex flex-wrap justify-center md:justify-evenly'>
         {currentItems.map((item) => {
@@ -46,7 +46,7 @@ const Pagination = ({ items, itemsPerPage }) => {
       </div>
 
       {/* Create the pagination buttons */}
-      <div className='w-full flex justify-center items-center mt-[4rem] mb-[1rem]'>
+      <div className='w-full flex flex-col sm:flex-row justify-center items-center mt-[4rem] mb-[1rem]'>
         <button 
         onClick={handlePrevious}
         className='h-[2.5rem] w-[5rem] m-2 p-2 flex justify-center items-center font-bold bg-blue-500 rounded-lg'
@@ -54,11 +54,13 @@ const Pagination = ({ items, itemsPerPage }) => {
           Previous
         </button>
 
-        {items.map((item,index) => (
-          <button key={item.$id} onClick={() => paginate(index + 1)} className='h-[2.5rem] w-[3rem] m-1 p-1 flex justify-center items-center bg-black dark:bg-gray-800 rounded-lg font-bold text-white dark:text-gray-300'>
-            {index + 1}
-          </button>
-        ))}
+        <div className='flex justify-center items-center'>
+            {items.map((item,index) => (
+              <button key={item.$id} onClick={() => paginate(index + 1)} className='h-[2.5rem] w-[3rem] m-1 p-1 flex justify-center items-center bg-black dark:bg-gray-800 rounded-lg font-bold text-white dark:text-gray-300'>
+                {index + 1}
+              </button>
+            ))}
+        </div>
 
         <button 
         onClick={handleNext} 
