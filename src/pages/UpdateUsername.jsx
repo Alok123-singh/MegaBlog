@@ -8,28 +8,42 @@ import { useNavigate } from 'react-router-dom';
 
 function UpdateUsername() {
 
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const {register, handleSubmit} = useForm();
     const [error, setError] = useState("");
     const dispatch = useDispatch();
 
     const update = async (data) => {
+        setLoading(true);
         console.log("Data : ",data);
+        if(data.name === ''){
+            alert('Enter new username!');
+            setLoading(false);
+            return;
+        }
         setError('');
 
         try {
             const user = await authService.updateUsername(data);
             if (user) {
                 dispatch(setUserData(user));
+                navigate('/my-account');
             }
-            navigate('/my-account');
             
         } catch (error) {
             setError(error.message)
         }
+        setLoading(false);
     }
 
-    return (
+    return loading ? (
+        <div className='dark:bg-slate-600 w-full flex justify-center items-center h-[10rem]'>
+        <div className='bg-blue-400 w-[6rem] flex justify-center items-center p-2 m-2 rounded-md'> Loading! </div>
+        </div>
+
+    ) : 
+    (
         <div className='dark:bg-slate-600 dark:text-gray-300 h-[20rem] w-full flex justify-center items-center'>
             {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
@@ -40,7 +54,7 @@ function UpdateUsername() {
                 placeholder = "Enter your name"
                 className='outline-none cursor-pointer w-[20.2rem] h-[2.5rem] rounded-lg focus:bg-blue-300 bg-blue-300 p-2 my-2 text-center placeholder-gray-600' 
                 {...register("name", {
-                    required: true
+                    required: false
                 })}
                 />
 

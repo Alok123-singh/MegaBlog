@@ -32,6 +32,8 @@ export class DatabaseService{
 
         } catch (error) {
             console.log("Appwrite error :: createPost :: ",error);
+            const msg = String(error);
+            alert(msg.substring(19));
             return (false);
         }
     }
@@ -52,6 +54,8 @@ export class DatabaseService{
 
         } catch (error) {
             console.log("Appwrite error :: updatePost :: ",error);
+            const msg = String(error);
+            alert(msg.substring(19));
             return (false);
         }
     }
@@ -68,6 +72,8 @@ export class DatabaseService{
             
         } catch (error) {
             console.log("Appwrite error :: deletePost :: ",error);
+            const msg = String(error);
+            alert(msg.substring(19));
             return (false);
         }
     }
@@ -110,6 +116,8 @@ export class DatabaseService{
             
         } catch (error) {
             console.log("Appwrite error :: uploadFile :: ",error);
+            const msg = String(error);
+            alert(msg.substring(19));
             return (false);
         }
     }
@@ -124,6 +132,8 @@ export class DatabaseService{
             
         } catch (error) {
             console.log("Appwrite error :: deleteFile :: ",error);
+            const msg = String(error);
+            alert(msg.substring(19));
             return (false);
         }
     }

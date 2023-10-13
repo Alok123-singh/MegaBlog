@@ -8,28 +8,42 @@ import { useNavigate } from 'react-router-dom';
 
 function UpdateEmail() {
 
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const {register, handleSubmit} = useForm();
     const [error, setError] = useState("");
     const dispatch = useDispatch();
 
     const update = async (data) => {
+        setLoading(true);
         console.log("Data : ",data);
         setError('');
+        if(data.password === ''){
+            alert('Enter your password!');
+            setLoading(false);
+            return;
+        }
 
         try {
             const user = await authService.updateEmail(data);
             if (user) {
                 dispatch(setUserData(user));
+                navigate('/my-account');
             }
-            navigate('/my-account');
             
         } catch (error) {
             setError(error.message)
         }
+        setLoading(false);
     }
 
-    return (
+    return loading ? (
+        <div className='dark:bg-slate-600 w-full flex justify-center items-center h-[10rem]'>
+        <div className='bg-blue-400 w-[6rem] flex justify-center items-center p-2 m-2 rounded-md'> Loading! </div>
+        </div>
+
+    ) : 
+    (
         <div className='h-[20rem] dark:bg-slate-600 dark:text-gray-300 w-full flex justify-center items-center'>
             {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
@@ -54,7 +68,7 @@ function UpdateEmail() {
                 placeholder = "Enter password"
                 className='outline-none ml-[0rem] cursor-pointer w-[9rem] h-[2.5rem] rounded-lg text-center bg-blue-300 focus:bg-blue-300 p-2 m-2 placeholder-gray-600' 
                 {...register("password", {
-                    required: true
+                    required: false
                 })}
                 />
 

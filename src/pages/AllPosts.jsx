@@ -41,18 +41,14 @@ function AllPosts() {
         No Posts yet!!
     </div>) : 
     (
-        <div className='w-full pt-[4.5rem] pb-[5rem] dark:bg-slate-600'>
-            <Container >
-                <div className='w-full flex flex-col items-center lg:flex-row'>
-                    {posts?.map((post) => {
-                        console.log("Post : ",post);
-                        // console.log(userData.$id);
-                        return post?.userId == userData?.$id ?
-                        <div key={post.$id} className='p-2 w-[19rem] flex flex-wrap'>
+        <div className='w-full py-10 dark:bg-slate-600 dark:text-gray-300'>
+            <Container>
+                <div className='flex flex-wrap justify-center md:justify-between'>
+                    {posts.map((post) => (
+                        <div key={post.$id} className='p-2 w-[18rem]'>
                             <PostCard {...post} />
                         </div>
-                        : null
-                    })}
+                    ))}
                 </div>
             </Container>
         </div>
