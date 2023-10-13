@@ -50,7 +50,7 @@ function AllPosts() {
         <div className='w-full py-10 dark:bg-slate-600 dark:text-gray-300'>
             <Container>
                 <div className='flex flex-wrap justify-center md:justify-evenly'>
-                    <Pagination items={posts} itemsPerPage={8} />
+                    <Pagination items={posts} itemsPerPage={12} />
                     {/* {posts.map((post) => {
 
                         return check(post) ?

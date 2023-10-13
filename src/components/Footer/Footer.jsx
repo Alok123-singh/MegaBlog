@@ -14,7 +14,7 @@ function Footer() {
                             </Link>
                             <div className=''>
                                 <p className="text-center text-sm text-gray-900 dark:text-slate-400">
-                                    &copy; Copyright 2023. All Rights Reserved by Megablog.
+                                    &copy; Copyright 2023. All Rights Reserved by Megablog07.
                                 </p>
                             </div>
                         </div>

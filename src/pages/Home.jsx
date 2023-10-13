@@ -69,7 +69,7 @@ function Home() {
             {showMessage()}
             <Container>
                 <div className='flex flex-wrap justify-center md:justify-evenly'>
-                    <Pagination items={posts} itemsPerPage={8} />
+                    <Pagination items={posts} itemsPerPage={12} />
                     {/* {posts.map((post) => {
 
                         return check(post) ?
