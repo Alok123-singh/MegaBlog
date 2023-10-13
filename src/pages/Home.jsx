@@ -36,7 +36,7 @@ function Home() {
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold cursor-default hover:text-gray-700 dark:hover:text-gray-400">
-                                Login to add your posts !
+                                Login to add your posts and have better experience !
                             </h1>
                         </div>
                     </div>
