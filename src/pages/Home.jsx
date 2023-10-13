@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import databaseService from "../appwrite/appwriteConfig";
 import {Container, PostCard} from '../components/index.js'
 import { useSelector } from 'react-redux';
-import authService from '../appwrite/auth';
 
 function Home() {
 
@@ -36,7 +35,7 @@ function Home() {
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold cursor-default hover:text-gray-700 dark:hover:text-gray-400">
-                                Login to add your posts and have better experience !
+                                Login to add your posts !
                             </h1>
                         </div>
                     </div>
