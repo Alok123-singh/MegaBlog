@@ -81,7 +81,7 @@ function Header() {
                         {loginStatus && (
                             <NavLink 
                             style={navLinkStyles}
-                            className='px-4 py-2 my-2 w-[8rem] duration-200 hover:bg-blue-100 dark:hover:bg-emerald-700 rounded-full text-center cursor-pointer '
+                            className='px-2 sm:mr-2 py-2 my-2 h-[2.3rem] w-[7rem] flex items-center justify-center duration-200 hover:bg-slate-400 dark:hover:bg-emerald-700 rounded-full text-center cursor-pointer '
                             to={'/my-account'}
                             // onClick={() => navigate('/my-account')}
                             >
@@ -89,11 +89,11 @@ function Header() {
                             </NavLink>
                         )}
                         {loginStatus && (
-                            <div> 
+                            <div className=''> 
                                 <LogoutBtn />
                             </div>
                         )}
-                        <div className={`${!loginStatus ? "m-4 sm:mt-[1.1rem]" : 'pt-4 sm:pt-[1px] sm:m-4'}`}>
+                        <div className={`${!loginStatus ? "m-4 sm:mt-[1.1rem]" : ' sm:m-[0.9rem]'}`}>
                             <ThemeButton />
                         </div>
                     </div>
@@ -117,9 +117,6 @@ function Header() {
                             </div>
                             </div>
                         </button>
-
-                        
-
 
                     </div>
 
@@ -145,7 +142,7 @@ function Header() {
                     
                 </div>
 
-                <div className='flex justify-evenly h-auto my-4'>
+                <div className='flex justify-evenly h-auto mb-2'>
                     {loginStatus && (
                         <NavLink 
                         style={navLinkStyles}
@@ -157,7 +154,7 @@ function Header() {
                         </NavLink>
                     )}
                     {loginStatus && (
-                        <div> 
+                        <div > 
                             <LogoutBtn />
                         </div>
                     )}

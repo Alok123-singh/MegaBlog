@@ -17,7 +17,7 @@ function LogoutBtn() {
 
     return (
         <button 
-        className='pt-4 sm:pt-0 px-2 py-2 sm:my-4 duration-200 hover:bg-blue-100 dark:hover:bg-emerald-700  rounded-full'
+        className='mt-[0.6rem]  sm:pt-1 px-2 py-2 sm:my-[0.6rem] h-[2.3rem] flex justify-center items-center text-center duration-200 hover:bg-slate-400 dark:hover:bg-emerald-700  rounded-full'
         onClick={logoutHandler}
         >
             Logout
