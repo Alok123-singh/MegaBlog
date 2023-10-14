@@ -191,7 +191,7 @@ function Header() {
 
                 <input 
                 htmlFor="search"
-                className="w-[99%] md:w-[40%] h-[3rem] font-medium dark:bg-slate-300 px-2 outline-none rounded-r-3xl cursor-default border border-black border-l-0 placeholder-gray-500 dark:text-black" 
+                className="w-[99%] md:w-[40%] h-[3rem] font-medium dark:bg-slate-300 px-2 outline-none rounded-r-3xl cursor-pointer border border-black border-l-0 placeholder-gray-500 dark:text-black" 
                 type="text" 
                 placeholder="Search for anything" 
                 onChange={(e) => setSearchValue(e.currentTarget.value)}
