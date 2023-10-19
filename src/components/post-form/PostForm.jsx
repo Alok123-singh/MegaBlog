@@ -67,7 +67,7 @@ export default function PostForm({ post }) {
     useEffect(() => {
         setLoading(false);
 
-    },[userData]);
+    },[userData,post?.content]);
 
     useEffect(() => {
         const subscription = watch((value, { name }) => {

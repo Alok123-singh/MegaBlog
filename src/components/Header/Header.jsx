@@ -178,7 +178,10 @@ function Header() {
                 </div>
             </div>
             
-            <form className={`flex justify-center my-4 ${!location.pathname.localeCompare('/') || !location.pathname.match('/all-posts') && 'hidden' }`}>
+            <form 
+            className={`flex justify-center my-4 ${!location.pathname.localeCompare('/') || !location.pathname.match('/all-posts') && 'hidden' }`}
+            onSubmit={e => e.preventDefault()}
+            >
 
                 <label 
                 className="bg-white dark:bg-slate-300 rounded-l-3xl flex items-center pl-3 px-2 border border-black border-r-0"

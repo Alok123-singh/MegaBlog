@@ -51,7 +51,7 @@ function UpdateEmail() {
                 <label>Email : </label>
                 <Input
                 type="email"
-                placeholder = "Enter your email"
+                placeholder = "Enter your new email"
                 className='outline-none cursor-pointer w-[22.5rem] h-[2.5rem] rounded-lg focus:bg-blue-300 bg-blue-300 p-2 my-2 text-center placeholder-gray-600' 
                 {...register("email", {
                     required: true,
