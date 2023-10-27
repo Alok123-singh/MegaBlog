@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
 import authService from '../appwrite/auth'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUserData } from '../store/authSlice';
 import { Button, Input } from '../components/index.js';
 import { useNavigate } from 'react-router-dom';
 
 function UpdateUsername() {
 
+    const userData = useSelector(state => state.auth.userData);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit} = useForm({
+        defaultValues : {
+            "name" : userData.name
+        }
+    });
     const [error, setError] = useState("");
     const dispatch = useDispatch();
 

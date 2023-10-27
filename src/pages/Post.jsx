@@ -73,7 +73,7 @@ export default function Post() {
                     />
                 </div>
                 <div className="w-full mb-6">
-                    <h1 className="text-2xl font-bold text-black text-center">{post.title}</h1>
+                    <h1 className="text-2xl font-bold text-emerald-800 dark:text-emerald-300 text-center">{post.title}</h1>
                 </div>
                 <div className="w-full h-auto p-4 mb-10 border border-blue-400 border-l-fuchsia-500 rounded-3xl overflow-y-auto">
                     <div contentEditable spellcheck="false" className="w-full h-auto outline-none">

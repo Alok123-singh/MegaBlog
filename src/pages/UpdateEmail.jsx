@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
 import authService from '../appwrite/auth'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUserData } from '../store/authSlice';
 import { Button, Input } from '../components/index.js';
 import { useNavigate } from 'react-router-dom';
 
 function UpdateEmail() {
 
+    const userData = useSelector(state => state.auth.userData);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit} = useForm({
+        defaultValues: {
+            "email" : userData.email
+        }
+    });
     const [error, setError] = useState("");
     const dispatch = useDispatch();
 
@@ -51,7 +56,7 @@ function UpdateEmail() {
                 <label>Email : </label>
                 <Input
                 type="email"
-                placeholder = "Enter your new email"
+                placeholder = "Enter new email"
                 className='outline-none cursor-pointer w-[22.5rem] h-[2.5rem] rounded-lg focus:bg-blue-300 bg-blue-300 p-2 my-2 text-center placeholder-gray-600' 
                 {...register("email", {
                     required: true,
